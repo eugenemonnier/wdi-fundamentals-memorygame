@@ -23,11 +23,14 @@ const cards = [
 }
 ];
 let cardsInPlay = [];
-
+let score = 0;
 function checkForMatch() {
 	if (cardsInPlay.length === 2) {
 		if (cardsInPlay[0] === cardsInPlay[1]) {
 			alert("You found a match!");
+			score = score + 1;
+			console.log(score);
+			document.getElementById('score-card').innerHTML = score;
 		} else {
 			alert("Sorry, try again");
 		}
@@ -56,6 +59,13 @@ function createBoard() {
 
 createBoard();
 
-function reset() {
+/*function reset() {
 	location.reload();
-}
+}*/
+
+function reset(){
+    document.getElementById('game-board').innerHTML = "";
+    createBoard();
+    cardsInPlay = [];
+};
+document.getElementById('score-card').innerHTML = score;
